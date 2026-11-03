@@ -1,0 +1,7 @@
+{
+  "name": "tantraholidays",
+  "private": true,
+  "scripts": {
+    "start": "npx http-server . -p 3000"
+  }
+}

@@ -1,0 +1,21 @@
+<svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7e8b8"/>
+      <stop offset="18%" stop-color="#e5c86b"/>
+      <stop offset="42%" stop-color="#d4ad4e"/>
+      <stop offset="64%" stop-color="#f4db9b"/>
+      <stop offset="82%" stop-color="#c7922e"/>
+      <stop offset="100%" stop-color="#f7e2a8"/>
+    </linearGradient>
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#d9af52" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#goldGlow)">
+    <path d="M95 38C70 38 50 58 50 83V290C50 315 70 335 95 335H170C211 335 244 302 244 260C244 220 213 189 174 189H110V145H176C207 145 234 117 234 85C234 52 205 38 170 38H95ZM114 62H168C192 62 210 75 210 95C210 115 192 128 168 128H114V62ZM114 163H172C194 163 212 178 212 201C212 223 194 239 171 239H114V163Z" fill="url(#gold)"/>
+    <path d="M286 315V84H323L429 189L530 84H568V315H521V181L430 290H328L239 181V315H286Z" fill="url(#gold)"/>
+    <text x="610" y="240" font-size="210" font-weight="700" letter-spacing="2" font-family="Georgia, 'Times New Roman', serif" fill="url(#gold)" style="font-style:normal;">PODO</text>
+  </g>
+</svg>

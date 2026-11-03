@@ -1,252 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tantra Holidays</title>
-    <link rel="icon" href="./files/logo1.jpeg">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-        <link rel="stylesheet" type="text/css" href="./css/style1.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Tantra</title>
+    <link rel="icon" href="./files/logo1.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg-dark: rgba(8, 9, 10, 0.82);
+        --gold: #d9b673;
+        --gold-soft: rgba(217, 182, 115, 0.75);
+        --panel: rgba(12, 11, 10, 0.72);
+        --text: #f4efe7;
+        --muted: rgba(244, 239, 231, 0.75);
+        --line: rgba(217, 182, 115, 0.7);
+      }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-     <style>
- 
+      * { box-sizing: border-box; }
 
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        font-family: 'Manrope', sans-serif;
+        background: #050505;
+        color: var(--text);
+      }
 
+      body {
+        min-height: 100vh;
+        background-image: linear-gradient(90deg, rgba(4, 5, 6, 0.72), rgba(13, 10, 7, 0.48) 35%, rgba(13, 10, 7, 0.35) 60%, rgba(7, 6, 5, 0.68)), url('./contact_us.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: rgba(12, 9, 7, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(8px);
+      }
 
-  .home_section {
-      background-image: url('222.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: 	#000000; /* Set text color to make it visible against the background */
-      height: 580px;
-    }
-    .services {
-    background: #fff;
-    padding: 2rem 1rem;
-}
-*
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px; /* Adjust margin as needed */
-}
+      .navbar {
+        max-width: 1460px;
+        margin: 0 auto;
+        min-height: 88px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 28px 12px;
+        gap: 24px;
+      }
 
-.form-container iframe {
-    width: 100%; /* Adjust width as needed */
-    height:1000px
-    /* Height adjusted to fit the entire form */
-}
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        color: #f3efe7;
+        letter-spacing: 0.16em;
+      }
 
+      .brand-mark {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        position: relative;
+        transform: rotate(45deg);
+        border: 1px solid rgba(214, 180, 110, 0.95);
+        background: linear-gradient(135deg, rgba(214, 180, 110, 0.17), rgba(214, 180, 110, 0.02));
+        box-shadow: inset 0 0 0 1px rgba(214, 180, 110, 0.6);
+      }
 
+      .brand-mark::before,
+      .brand-mark::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba(214, 180, 110, 0.6);
+      }
+
+      .brand-mark::before {
+        transform: translate(3px, -3px);
+      }
+
+      .brand-mark::after {
+        transform: translate(-3px, 3px);
+      }
+
+      .brand-name {
+        font-size: 1.9rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        font-family: 'Cormorant Garamond', serif;
+      }
+
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 26px;
+        flex: 1;
+      }
+
+      .nav-item {
+        position: relative;
+        font-size: 0.95rem;
+        color: rgba(244, 239, 231, 0.88);
+      }
+
+      .nav-item a,
+      .nav-item button {
+        background: none;
+        border: 0;
+        font: inherit;
+        color: inherit;
+        cursor: pointer;
+        padding: 0;
+        opacity: 0.95;
+      }
+
+      .nav-item.active::after,
+      .nav-item:hover::after {
+        content: none;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 170px;
+        min-height: 42px;
+        padding: 0 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(214, 180, 110, 0.8);
+        color: #f5ead5;
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 0.9rem;
+        transition: 0.2s ease;
+      }
+
+      .cta-button:hover {
+        background: rgba(214, 180, 110, 0.18);
+      }
+
+      .contact-shell {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 120px 30px 42px;
+      }
+
+      .contact-wrap {
+        width: min(1280px, 100%);
+        display: grid;
+        grid-template-columns: 0.68fr 1.2fr;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+        margin-left: 0;
+      }
+
+      .contact-copy {
+        padding-left: 0;
+        margin-left: 0;
+      }
+
+      .mini-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 0.72rem;
+        letter-spacing: 0.28rem;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+      }
+
+      .mini-tag::before {
+        content: "";
+        width: 42px;
+        height: 1px;
+        background: var(--gold);
+      }
+
+      h1 {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        font-size: clamp(3.2rem, 3.5vw, 6rem);
+        line-height: 0.88;
+        color: #f8f0e4;
+        letter-spacing: -0.04em;
+      }
+
+      .copy-text {
+        margin-top: 20px;
+        max-width: 420px;
+        font-size: 1rem;
+        line-height: 1.65;
+        color: rgba(255, 251, 244, 0.95);
+      }
+
+      .contact-list {
+        margin-top: 30px;
+        display: grid;
+        gap: 16px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: rgba(255, 249, 241, 0.9);
+      }
+
+      .icon-box {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--gold-soft);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 0.82rem;
+        color: var(--gold);
+        background: rgba(15, 14, 12, 0.28);
+      }
+
+      .label {
+        display: block;
+        font-size: 0.73rem;
+        letter-spacing: 0.22rem;
+        text-transform: uppercase;
+        color: rgba(255, 244, 228, 0.65);
+        margin-bottom: 6px;
+      }
+
+      .value {
+        display: block;
+        font-size: 1rem;
+        color: rgba(255, 250, 244, 0.98);
+        text-decoration: none;
+      }
+
+      .social-row {
+        margin-top: 26px;
+        display: flex;
+        gap: 12px;
+      }
+
+      .social-link {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1px solid var(--gold-soft);
+        display: grid;
+        place-items: center;
+        text-decoration: none;
+        color: var(--gold);
+        background: rgba(14, 15, 14, 0.22);
+      }
+
+      .form-panel {
+        max-width: 420px;
+        width: 100%;
+        margin: 0 0 0 24px;
+        justify-self: start;
+        background: rgba(10, 9, 8, 0.62);
+        border: 1px solid var(--gold-soft);
+        border-radius: 20px;
+        box-shadow: 0 0 0 1px rgba(217, 182, 115, 0.12), inset 0 0 0 1px rgba(255,255,255,0.02);
+        padding: 18px 18px 16px;
+        backdrop-filter: blur(3px);
+      }
+
+      .field {
+        margin-bottom: 16px;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.66rem;
+        letter-spacing: 0.18rem;
+        text-transform: uppercase;
+        color: rgba(244, 238, 228, 0.9);
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        background: rgba(13, 11, 10, 0.5);
+        border: 1px solid rgba(217, 182, 115, 0.55);
+        border-radius: 10px;
+        color: #f5efe7;
+        font: inherit;
+        padding: 12px 14px;
+        outline: none;
+      }
+
+      .field input::placeholder,
+      .field textarea::placeholder {
+        color: rgba(255, 246, 235, 0.45);
+      }
+
+      .field select {
+        appearance: none;
+        background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%), linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+        background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
+        background-size: 6px 6px, 6px 6px;
+        background-repeat: no-repeat;
+      }
+
+      .field textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        border: 1px solid rgba(217, 182, 115, 0.85);
+        background: rgba(217, 182, 115, 0.9);
+        color: #1b150f;
+        font-weight: 700;
+        font-size: 1rem;
+        text-transform: none;
+        letter-spacing: 0.04em;
+        border-radius: 10px;
+        padding: 14px 16px;
+        cursor: pointer;
+        transition: 0.2s ease;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-1px);
+        background: rgba(228, 196, 128, 1);
+      }
+
+      @media (max-width: 980px) {
+        .contact-wrap {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+
+        .contact-copy {
+          padding-left: 0;
+        }
+
+        .form-panel {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .contact-shell {
+          padding: 28px 18px;
+        }
+
+        .form-panel {
+          padding: 20px 18px 14px;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Main navigation">
+        <a href="./index.html" class="brand" aria-label="Tantra home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">TANTRA</span>
+        </a>
 
-<!-- Background Video & Header -->
-
-    <header>
-     
-    <div class="container">
-      <div class="nav_bar">
-        <div class="logo">
-          <i class="fa-solid fa-route"></i>
-            <img src="./files/logo1.jpeg" class="logo" alt="Logo" title="FirstFlight Travels " style="width:70px">
-            <h4 style="font-family:emoji">TANTRA HOLIDAYS</h4>
+        <div class="nav-menu">
+          <div class="nav-item"><a href="./index.html">Home</a></div>
+          <div class="nav-item"><a href="./tantra-cabs.html">Our Brands</a></div>
+          <div class="nav-item"><a href="./our-approach.html">Our Approach</a></div>
+          <div class="nav-item"><a href="./about.html">About Us</a></div>
+          <div class="nav-item active"><a href="./contact.html">Contact Us</a></div>
         </div>
 
-          <div class="menu_list">
-            <a href="./index.html">Home</a>
-                    <a href="./locations.html">Locations</a>
-                   <!-- <a href="#package">Packages</a>-->
-                    <a href="./about.html">About Us</a>
-                    <a href="./contact.html">Contact Us</a>
+        <a href="./tantra-cabs.html" class="cta-button">Explore Brands →</a>
+      </nav>
+    </header>
 
+    <main class="contact-shell">
+      <div class="contact-wrap">
+        <aside class="contact-copy">
+          <div class="mini-tag">Get in touch</div>
+          <h1>Let’s build<br>what’s next.</h1>
 
-            <!--<button class="lg_btn">Login</button>-->
+          <p class="copy-text">
+            Have a question, a collaboration in mind, or just want to say hello?<br>
+            We’d love to hear from you.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="icon-box">✉</div>
+              <div>
+                <span class="label">Email us</span>
+                <a class="value" href="mailto:contact.tantraholidays@gmail.com">contact.tantraholidays@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon-box">☎</div>
+              <div>
+                <span class="label">Call us</span>
+                <a class="value" href="tel:+919495301375">+91 9495301375</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="icon-box">⌖</div>
+              <div>
+                <span class="label">Our office</span>
+                <span class="value">Mayithara, Cherthala,<br>Alappuzha, Kerala 680003</span>
+              </div>
+            </div>
           </div>
-      </div>
-    </div>
-  </header>
 
-  <section class="home_section">
-    <div class="overlay">
-      <div class="container">
-        <div class="home">
-          <h1><span>Contact</span> Us</h1>
-           <p style="text-align: center;color: white">Kindly complete the form below, and we'll be in touch with you shortly!</p>
-          <div class="home_buttons">
-            <!--<button><i class="fas fa-play"></i>Video</button>-->
+          <div class="social-row" aria-label="Social links">
+            <a class="social-link" href="#" aria-label="LinkedIn">in</a>
+            <a class="social-link" href="#" aria-label="Instagram">◎</a>
+            <a class="social-link" href="#" aria-label="X">X</a>
           </div>
-        </div>
+        </aside>
+
+        <section class="form-panel" aria-label="Contact form">
+          <form>
+            <div class="field">
+              <label for="name">Full name *</label>
+              <input id="name" type="text" placeholder="Your name" />
+            </div>
+
+            <div class="field">
+              <label for="email">Email address *</label>
+              <input id="email" type="email" placeholder="you@company.com" />
+            </div>
+
+            <div class="field">
+              <label for="subject">Subject *</label>
+              <select id="subject">
+                <option selected>Select an option</option>
+                <option>General enquiry</option>
+                <option>Partnership</option>
+                <option>Project discussion</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="message">Message *</label>
+              <textarea id="message" placeholder="How can we help you?"></textarea>
+            </div>
+
+            <button class="submit-btn" type="submit">Send Message →</button>
+          </form>
+        </section>
       </div>
-    </div>
-  </section>
-
-
-<!-- Services -->
-
-
-<!-- Locations -->
-<div class="form-container">
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdC-VdtkRT94SctChMroK1u7AcWLyOcq65DFHax5EuhCoaYAA/viewform?embedded=true">Loading…</iframe>
-</div>
-<!--<section class="package" id="package">
-    <div class="package-title">
-        <h2>Packages</h2>
-    </div>
-
-    <div class="package-content">
-        
-        <div class="box">
-            <div class="image">
-                <img src="./files/p1.jpg" alt="">
-                <h3>Rs.9,999/-</h3>
-            </div>
-        
-        <div class="dest-content">
-            <div class="location">
-                <h4>Bronze</h4>
-                <ul class="pac-details">
-                    <li>2 Star Hotel</li>
-                    <li>5 Nights Stay</li>
-                    <li>Free photo Session</li>
-                    <li>Friendly Tour Guide</li>
-                    <li>24/7 Customer Help Center</li>
-                </ul>
-            </div>
-        </div>
-        </div>
-        
-        <div class="box">
-            <div class="image">
-                <img src="./files/p2.jpg" alt="">
-                <h3>Rs.19,999/-</h3>
-            </div>
-        
-        <div class="dest-content">
-            <div class="location">
-                <h4>Silver</h4>
-                <ul class="pac-details">
-                    <li>3 Star Hotel</li>
-                    <li>7 Nights Stay</li>
-                    <li>Free photo Session</li>
-                    <li>Friendly Tour Guide</li>
-                    <li>24/7 Customer Help Center</li>
-                </ul>
-            </div>
-        </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="./files/p3.jpg" alt="">
-                <h3>Rs.29,999/-</h3>
-            </div>
-        
-        <div class="dest-content">
-            <div class="location">
-                <h4>Gold</h4>
-                <ul class="pac-details">
-                    <li>4 Star Hotel</li>
-                    <li>10 Nights Stay</li>
-                    <li>Breakfast and Dinner</li>
-                    <li>Free photo Session</li>
-                    <li>Friendly Tour Guide</li>
-                    <li>24/7 Customer Help Center</li>
-                </ul>
-            </div>
-        </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="./files/p4.jpg" alt="">
-                <h3>Rs.39,999/-</h3>
-            </div>
-        
-        <div class="dest-content">
-            <div class="location">
-                <h4>Platinum</h4>
-                <ul class="pac-details">
-                    <li>5 Star Hotel</li>
-                    <li>14 Nights Stay</li>
-                    <li>Breakfast, Lunch and Dinner</li>
-                    <li>Bornfire</li>
-                    <li>Free photo Session</li>
-                    <li>Friendly Tour Guide</li>
-                    <li>24/7 Customer Help Center</li>
-                </ul>
-            </div>
-        </div>
-        </div>
-
-    </div>
-
-</section>-->
-
-<!-- Newsletter -->
-
-<!--<section class="newsletter">
-    <div class="newstext">
-        <h2>Newsletter</h2>
-        <p>Subscribe to get offers and latest<br>updates every week!</p>
-    </div>
-
-    <div class="send">
-        <form action="">
-            <input type="email" name="emailid" placeholder="E-mail" required>
-            <input type="submit" value="Subscribe">
-        </form>
-    </div>
-
-</section>-->
-
-<!-- Footer -->
-
-<section class="footer">
-    <div class="foot">
-        <div class="footer-content">
-            
-            <div class="footlinks">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="./register.html">Register</a></li>
-                    <li><a href="./about.html">About Us</a></li>
-                    <!--<li><a href="./contact.html">Contact Us</a></li>-->
-                    <h4 style="color:white">Mob:91 9495301375</h4>
-                    <h4 style="color:white">Email:samsabu777@gmail.com</h4>
-
-                     
-                </ul>
-            </div>
-
-            <div class="footlinks">
-                <h4>Connect</h4>
-                <div class="social">
-                    <a href="https://www.facebook.com/mohd.rahil.blogger" target="_blank"><i class='bx bxl-facebook'></i></a>
-                    <a href="https://www.instagram.com/mohdrahil101" target="_blank"><i class='bx bxl-instagram' ></i></a>
-                   
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
-    <div class="end">
-        
-    </div>
-</section>
-
-
- 
-</body>
+    </main>
+  </body>
 </html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podo | Travel Essentials</title>
+    <link rel="icon" href="./files/Tantra.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-forest: #0b2d29;
+            --bg-forest-deep: #061d1a;
+            --olive-1: #d9dfc5;
+            --olive-2: #b8c29d;
+            --sage: #7b8f72;
+            --green-strong: #1f403a;
+            --paper: #f0ece3;
+            --paper-2: #efe8dc;
+            --text: #1d1e1c;
+            --muted: rgba(29, 30, 28, 0.75);
+            --line: rgba(28, 45, 37, 0.2);
+            --shadow: rgba(12, 25, 20, 0.18);
+        }
+
+        * { box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--paper);
+            color: var(--text);
+        }
+        a { text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        .site-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            background: linear-gradient(180deg, rgba(15, 26, 24, 0.7), rgba(15, 26, 24, 0.15));
+        }
+
+        .navbar {
+            max-width: 1460px;
+            margin: 0 auto;
+            padding: 20px 36px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(226, 214, 178, 0.5);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: #f9f3ea;
+        }
+
+        .brand-logo {
+            display: block;
+            width: auto;
+            height: 64px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            filter: none;
+        }
+
+        .brand-mark {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(183, 158, 95, 0.9));
+            color: #0f1917;
+            font-weight: 700;
+            font-size: 1rem;
+            clip-path: polygon(50% 0%, 100% 22%, 100% 78%, 50% 100%, 0% 78%, 0% 22%);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+        }
+
+        .brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            line-height: 1;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-item {
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .nav-item > a,
+        .nav-item > button {
+            color: rgba(255,255,255,0.9);
+            background: transparent;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            padding: 6px 10px;
+        }
+
+        .nav-item.active::after {
+            content: "";
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: -10px;
+            height: 1px;
+            background: rgba(219, 206, 165, 0.9);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 146px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(228, 210, 162, 0.75);
+            background: rgba(255,255,255,0.02);
+            color: #f3ead9;
+            font-size: 0.92rem;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 620px;
+            background:
+                linear-gradient(90deg, rgba(12, 19, 18, 0.7) 0%, rgba(12, 19, 18, 0.46) 38%, rgba(12, 19, 18, 0.18) 100%),
+                url('./podoback.jpeg') center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            max-width: 1460px;
+            margin: 0 auto;
+            padding: 132px 36px 42px;
+            display: grid;
+            grid-template-columns: 1.05fr 1.05fr;
+            align-items: center;
+            min-height: 620px;
+        }
+
+        .hero-copy {
+            padding-top: 30px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            color: rgba(244, 235, 220, 0.8);
+            font-size: 0.72rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 52px;
+            height: 1px;
+            background: rgba(220, 196, 125, 0.8);
+        }
+
+        .hero-copy h1 {
+            margin: 0;
+            color: #f5efe7;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4.2rem, 5vw, 7rem);
+            line-height: 0.88;
+            letter-spacing: -0.07em;
+            font-weight: 600;
+            max-width: 650px;
+        }
+
+        .hero-copy p {
+            margin: 20px 0 28px;
+            max-width: 580px;
+            color: rgba(255,255,255,0.82);
+            font-size: 1.06rem;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .primary-button,
+        .secondary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+            padding: 16px 22px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .primary-button {
+            background: rgba(236, 229, 209, 0.9);
+            color: #10251d;
+            border: 1px solid rgba(236, 229, 209, 0.4);
+        }
+
+        .secondary-button {
+            border: 1px solid rgba(236, 229, 209, 0.5);
+            color: #f6efea;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .primary-button:hover,
+        .secondary-button:hover,
+        .cta-button:hover {
+            transform: translateY(-1px);
+        }
+
+        .features {
+            background: var(--paper-2);
+            padding: 28px 0 10px;
+            min-height: 520px;
+            scroll-margin-top: 100px;
+        }
+
+        .features-inner {
+            max-width: 1460px;
+            margin: 0 auto;
+            padding: 0 36px 0;
+        }
+
+        .feature-copy {
+            display: grid;
+            grid-template-columns: 1.15fr 3fr;
+            gap: 22px;
+            align-items: end;
+            margin-bottom: 18px;
+        }
+
+        .feature-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            color: rgba(31, 31, 28, 0.72);
+            text-transform: uppercase;
+            letter-spacing: 0.24em;
+            font-size: 0.72rem;
+            margin-bottom: 16px;
+        }
+
+        .feature-label::before {
+            content: "";
+            width: 52px;
+            height: 1px;
+            background: rgba(106, 135, 86, 0.7);
+        }
+
+        .feature-heading {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 4vw, 5.2rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+            font-weight: 600;
+            color: #1a1b1a;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 8px;
+        }
+
+        .mini-card {
+            border: 1px solid rgba(46, 66, 52, 0.14);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.12);
+            min-height: 150px;
+            padding: 18px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+        }
+
+        .mini-icon {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            border: 1px solid rgba(26, 44, 34, 0.5);
+            display: grid;
+            place-items: center;
+            font-size: 2rem;
+            color: #233c33;
+            margin-bottom: 18px;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .mini-card h3 {
+            margin: 0 0 8px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.1rem, 2vw, 2.8rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            color: #1c1e1d;
+        }
+
+        .mini-card ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--muted);
+            font-size: 0.96rem;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .catalog {
+            margin-top: 18px;
+            min-height: 420px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02));
+            border-top: 1px solid rgba(26, 44, 33, 0.1);
+            padding-top: 18px;
+        }
+
+        .catalog-inner {
+            max-width: 1460px;
+            margin: 0 auto;
+            padding: 0 36px 0;
+            display: grid;
+            grid-template-columns: 0.95fr 1.75fr;
+            gap: 26px;
+            align-items: center;
+            min-height: 420px;
+        }
+
+        .catalog-copy {
+            padding-right: 8px;
+        }
+
+        .catalog-copy .feature-label { margin-bottom: 12px; }
+
+        .catalog-copy h2 {
+            margin: 0 0 16px;
+            color: #1a1b1a;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 4vw, 5.2rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+            font-weight: 600;
+        }
+
+        .catalog-copy p {
+            margin: 0 0 28px;
+            color: var(--muted);
+            font-size: 1.02rem;
+            line-height: 1.8;
+            max-width: 460px;
+        }
+
+        .explore-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(34, 51, 41, 0.5);
+            color: #1a2a24;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .catalog-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .showcase-main,
+        .showcase-bag {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: none;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding: 0;
+            min-height: 330px;
+        }
+
+        .showcase-main img,
+        .showcase-bag img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .scroll-indicator,
+        .section-scroll-indicator {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            width: 38px;
+            height: 60px;
+            border-radius: 999px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
+            z-index: 2;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            border: 1px solid rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.85);
+        }
+
+        .section-scroll-indicator {
+            position: relative;
+            left: auto;
+            bottom: auto;
+            transform: none;
+            margin: 18px auto 0;
+            border: 1px solid rgba(25, 24, 22, 0.55);
+            background: rgba(255,255,255,0.24);
+            color: rgba(25, 24, 22, 0.8);
+        }
+
+        .scroll-indicator:hover,
+        .section-scroll-indicator:hover {
+            opacity: 0.9;
+            transform: translateX(-50%) translateY(2px);
+        }
+
+        .section-scroll-indicator:hover {
+            transform: translateY(2px);
+        }
+
+        .scroll-indicator::before,
+        .section-scroll-indicator::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: scrollDot 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollDot {
+            0% { transform: translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(16px); opacity: 0; }
+        }
+
+        .cta-strip {
+            max-width: 1460px;
+            margin: 0 auto;
+            padding: 18px 36px 0;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .cta-strip .tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            color: #1a1d1a;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.1rem, 3vw, 3.4rem);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            font-style: italic;
+        }
+
+        .cta-strip .tagline::before {
+            content: "";
+            width: 58px;
+            height: 1px;
+            background: rgba(31, 33, 28, 0.7);
+        }
+
+        .site-footer {
+            margin-top: 26px;
+            background: linear-gradient(180deg, rgba(8, 26, 23, 0.95), rgba(8, 26, 23, 1));
+            border-top: 1px solid rgba(214, 196, 142, 0.35);
+            color: rgba(255,255,255,0.86);
+        }
+
+        .footer-inner {
+            max-width: 1460px;
+            margin: 0 auto;
+            padding: 20px 36px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-brand .brand-mark {
+            width: 22px;
+            height: 22px;
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a,
+        .footer-copy {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1080px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .hero-inner,
+            .feature-copy,
+            .catalog-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .catalog-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-copy {
+                max-width: 700px;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .navbar, .hero-inner, .features-inner, .catalog-inner, .cta-strip, .footer-inner {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .nav-menu {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 620px;
+            }
+
+            .hero-inner {
+                padding-top: 120px;
+                min-height: 620px;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="index.html" class="brand" aria-label="Podo home">
+                <img src="./files/podo-logo.svg" alt="Podo logo" class="brand-logo" />
+            </a>
+
+            <div class="nav-menu">
+                <div class="nav-item"><a href="index.html">Home</a></div>
+                <div class="nav-item"><a href="#whats-inside">What's Inside</a></div>
+                <div class="nav-item"><a href="#buy-now">Buy Now</a></div>
+                <div class="nav-item"><a href="about.html">About</a></div>
+                <div class="nav-item"><a href="contact.html">Contact</a></div>
+            </div>
+
+            <a href="#buy-now" class="cta-button">Shop Now →</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <div class="eyebrow">Podo</div>
+                    <h1>Travel essentials<br>for every journey.</h1>
+                    <p>Compact. Thoughtful. All-in-one travel kit for a cleaner, safer, more comfortable journey.</p>
+                    <div class="hero-actions">
+                        <a class="primary-button" href="#buy-now">Explore Kit →</a>
+                        <a class="secondary-button" href="index.html">Back to Tantra</a>
+                    </div>
+                </div>
+
+                <a href="#whats-inside" class="scroll-indicator" aria-label="Scroll to what's inside"></a>
+            </div>
+        </section>
+
+        <section class="features" id="whats-inside">
+            <div class="features-inner">
+                <div class="feature-copy">
+                    <div>
+                        <div class="feature-label">Why Podo</div>
+                        <h2 class="feature-heading">Everything you need,<br>all in one kit.</h2>
+                    </div>
+                    <div>
+                        <p style="margin:0; max-width: 620px; color: var(--muted); font-size: 1.05rem; line-height:1.8;">From daily essentials to personal care, PODO keeps you prepared, fresh and comfortable — wherever you go.</p>
+                    </div>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="mini-card" style="grid-column: 1 / -1;">
+                        <div class="mini-icon">✓</div>
+                        <h3>Podo Essentials</h3>
+                        <ul>
+                            <li>Wet Wipes</li>
+                            <li>Sanitary Pads</li>
+                            <li>Paper Soap</li>
+                            <li>Mask</li>
+                            <li>Sanitizer</li>
+                            <li>Toothbrush, Paste &amp; Comp</li>
+                            <li>Towel</li>
+                            <li>Spoon &amp; Fork</li>
+                            <li>Toilet Cover</li>
+                            <li>Vomiting Bag</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="#buy-now" class="section-scroll-indicator" aria-label="Scroll to next section"></a>
+
+            <div class="catalog" id="buy-now">
+                <div class="catalog-inner">
+                    <div class="catalog-copy">
+                        <div class="feature-label">What's Inside</div>
+                        <h2>Essentials for<br>Every Journey.</h2>
+                        <p>Compact. Convenient. Conscious. PODO brings together everyday travel essentials in one thoughtfully designed kit.</p>
+                        <a href="#buy-now" class="explore-button">Explore Contents →</a>
+                    </div>
+
+                    <div class="catalog-showcase" style="grid-template-columns: 1.3fr 1fr;">
+                        <div class="showcase-main">
+                            <img src="./podoproducts.jpeg" alt="Podo kit products">
+                        </div>
+                        <div class="showcase-bag">
+                            <img src="./podobag.jpeg" alt="Podo travel pouch">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-strip">
+                <div class="tagline">Small pack.<br>Big journeys.</div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const trigger = document.querySelector('.scroll-indicator');
+            if (!trigger) return;
+
+            trigger.addEventListener('click', function (event) {
+                event.preventDefault();
+                const target = document.getElementById('whats-inside');
+                if (!target) return;
+
+                const offset = 90;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({
+                    top,
+                    behavior: 'smooth'
+                });
+                window.history.pushState(null, '', '#whats-inside');
+            });
+        });
+    </script>
+</body>
+</html>

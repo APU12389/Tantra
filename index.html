@@ -3,219 +3,636 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Tantra Holidays</title>
-    <link rel="icon" href="./files/logo1.jpg">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link rel="stylesheet" type="text/css" href="./css/style1.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Tantra | Parent Company</title>
+    <link rel="icon" href="./files/Tantra.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        
-        .home_section {
-            background-image: url('222.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: #000000;
-            height: 580px;
+        :root {
+            --bg-dark: #120e0b;
+            --panel: #f3eee6;
+            --panel-soft: #f5f0e8;
+            --gold: #b79a6a;
+            --gold-deep: #8d6b42;
+            --ivory: #f3eadc;
+            --text: #211c18;
+            --muted: rgba(28, 23, 20, 0.72);
+            --shadow: rgba(0, 0, 0, 0.22);
         }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #efe7df;
+            color: var(--text);
+        }
+
+        a { text-decoration: none; }
+
+        img { max-width: 100%; display: block; }
+
+        .site-header {
+            position: absolute;
+            inset: 0 0 auto 0;
+            z-index: 10;
+        }
+
         .navbar {
-            background-color: white; /* Set background to white */
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 22px 28px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(200, 170, 125, 0.65);
         }
-        .navbar-nav .nav-link {
-            color: black; /* Set font color to black */
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: #f2e6d2;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
-        .navbar-nav .nav-link:hover {
-            color: #6c757d; /* Change color on hover */
+
+        .brand-logo {
+            display: block;
+            width: auto;
+            height: 90px;
+            object-fit: contain;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            filter: none;
         }
-        .location-content .col-content {
+
+        .brand-mark {
+            position: relative;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            transform: rotate(45deg);
+            background: linear-gradient(135deg, rgba(242, 228, 209, 0.9), rgba(157, 125, 82, 0.7));
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+        }
+
+        .brand-mark::before,
+        .brand-mark::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(20, 15, 10, 0.7);
+            background: rgba(16, 10, 8, 0.2);
+            border-radius: 2px;
+        }
+
+        .brand-mark::after {
+            inset: 12px;
+            background: rgba(241, 227, 205, 0.5);
+        }
+
+        .brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: 0.08em;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            min-height: 40px;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-item > a,
+        .nav-item button {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.86);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            padding: 0;
+        }
+
+        .nav-item.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -10px;
+            height: 1px;
+            background: rgba(223, 202, 170, 0.9);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 180px;
+            background: rgba(18, 12, 8, 0.82);
+            border: 1px solid rgba(191, 160, 110, 0.35);
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            box-shadow: 0 18px 32px rgba(0,0,0,0.2);
+        }
+
+        .nav-dropdown:hover .dropdown-menu,
+        .nav-dropdown:focus-within .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 8px;
+            color: rgba(255,255,255,0.88);
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(191, 160, 110, 0.12);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 160px;
+            padding: 12px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(219, 189, 140, 0.75);
+            color: #f5e7d0;
+            background: rgba(255,255,255,0.02);
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 620px;
+            background:
+                linear-gradient(90deg, rgba(20, 15, 12, 0.72) 0%, rgba(20, 15, 12, 0.55) 38%, rgba(20, 15, 12, 0.18) 100%),
+                url('./tantraback.jpeg') center/cover no-repeat;
+            overflow: hidden;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 90px 30px 40px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            min-height: 620px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 24px;
+            color: rgba(255,255,255,0.82);
+            text-transform: uppercase;
+            letter-spacing: 0.28em;
+            font-size: 0.72rem;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 56px;
+            height: 1px;
+            background: rgba(199, 171, 122, 0.85);
+            display: inline-block;
+        }
+
+        .hero-copy h1 {
+            margin: 0;
+            color: #f5ebdf;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: clamp(5rem, 7vw, 10rem);
+            line-height: 0.82;
+            letter-spacing: -0.065em;
+        }
+
+        .hero-copy p {
+            max-width: 620px;
+            margin: 28px 0 36px;
+            color: rgba(255,255,255,0.82);
+            font-size: 1.07rem;
+            line-height: 1.75;
+        }
+
+        .primary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 210px;
+            padding: 18px 22px;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 214, 182, 0.7);
+            background: rgba(245, 239, 231, 0.08);
+            color: #f9f2e9;
+            font-weight: 500;
+            transition: all 0.25s ease;
+        }
+
+        .primary-button:hover {
+            background: rgba(235, 207, 153, 0.14);
+            transform: translateY(-1px);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            min-height: 420px;
+        }
+
+        .scroll-indicator,
+        .section-scroll-indicator {
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            width: 38px;
+            height: 60px;
+            border-radius: 999px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 10px;
+            z-index: 2;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .hero-visual .scroll-indicator,
+        .hero .scroll-indicator {
+            border: 1px solid rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.85);
+        }
+
+        .section-scroll-indicator {
+            position: relative;
+            left: auto;
+            bottom: auto;
+            transform: none;
+            margin: 18px auto 0;
+            border: 1px solid rgba(25, 24, 22, 0.55);
+            background: rgba(255,255,255,0.2);
+            color: rgba(25, 24, 22, 0.8);
+        }
+
+        .scroll-indicator:hover,
+        .section-scroll-indicator:hover {
+            opacity: 0.9;
+            transform: translateX(-50%) translateY(2px);
+        }
+
+        .section-scroll-indicator:hover {
+            transform: translateY(2px);
+        }
+
+        .scroll-indicator::before,
+        .section-scroll-indicator::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: scrollDot 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollDot {
+            0% { transform: translateY(0); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(16px); opacity: 0; }
+        }
+
+        .philosophy {
+            position: relative;
+            background:
+                linear-gradient(180deg, rgba(244, 239, 232, 0.96) 0%, rgba(244, 239, 232, 0.96) 60%, rgba(244, 239, 232, 0.18) 100%),
+                url('./tantraback1.jpeg') center bottom/cover no-repeat;
+            min-height: 560px;
+            overflow: hidden;
+        }
+
+        .philosophy-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 42px 28px 0;
+            min-height: 440px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .philosophy-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            color: rgba(30, 24, 20, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.72rem;
+            margin-bottom: 12px;
+        }
+
+        .philosophy-tag::before {
+            content: "";
+            width: 52px;
+            height: 1px;
+            background: rgba(135, 98, 58, 0.8);
+            display: inline-block;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 28px;
+            align-items: end;
+            margin-top: 10px;
+        }
+
+        .vision-title {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: clamp(3.3rem, 4.3vw, 5.8rem);
+            line-height: 0.9;
+            letter-spacing: -0.07em;
+            color: #1c1713;
+        }
+
+        .feature-card {
+            text-align: left;
+            padding: 16px 0 12px;
+            min-height: 180px;
+            color: rgba(30, 24, 20, 0.8);
+        }
+
+        .feature-icon {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            margin: 0 auto 18px;
+            border: 1px solid rgba(124, 90, 52, 0.75);
+            background: rgba(255,255,255,0.04);
+            display: grid;
+            place-items: center;
+            color: rgba(124, 90, 52, 0.9);
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 10px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: clamp(2rem, 2vw, 2.6rem);
+            line-height: 1.04;
+            color: #1c1713;
             text-align: center;
         }
-        .location-content .col-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center content horizontally */
-}
-        
-        .footer-content .footlinks ul li {
-            color: black; /* Change font color to black */
+
+        .feature-card p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(28, 24, 21, 0.78);
+            text-align: center;
+        }
+
+        .journey-strip {
+            position: absolute;
+            left: 54px;
+            right: 54px;
+            bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            color: rgba(255, 255, 255, 0.98);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 2vw, 2.7rem);
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            z-index: 1;
+            text-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .journey-strip::before {
+            content: "";
+            width: 56px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.82);
+            display: inline-block;
+        }
+
+        .journey-strip strong {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        @media (max-width: 980px) {
+            .navbar {
+                flex-wrap: wrap;
+                gap: 12px 18px;
+                justify-content: center;
+            }
+
+            .nav-menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-copy {
+                text-align: center;
+            }
+
+            .eyebrow {
+                justify-content: center;
+            }
+
+            .hero-copy p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .philosophy {
+                min-height: 560px;
+            }
+
+            .philosophy-wrap {
+                min-height: 560px;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .vision-title {
+                font-size: clamp(3.2rem, 10vw, 5rem);
+            }
+
+            .feature-card {
+                min-height: 0;
+            }
+
+            .journey-strip {
+                left: 24px;
+                right: 24px;
+                bottom: 16px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .navbar {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .brand-name {
+                font-size: 1.8rem;
+            }
+
+            .nav-item {
+                font-size: 0.8rem;
+            }
+
+            .cta-button {
+                display: none;
+            }
+
+            .hero-inner,
+            .philosophy-wrap {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .hero {
+                min-height: 620px;
+            }
+
+            .hero-inner {
+                min-height: 620px;
+                padding-top: 110px;
+            }
+
+            .philosophy-wrap {
+                padding-top: 56px;
+            }
+
+            .journey-strip {
+                left: 18px;
+                right: 18px;
+                bottom: 14px;
+            }
         }
     </style>
 </head>
-<body>
-
-<!-- Header -->
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:white">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="./files/logo1.jpeg" class="logo" alt="Logo" title="FirstFlight Travels" style="width:70px">
-                <h4 style="font-family:emoji;color:black">TANTRA HOLIDAYS</h4>
+<body id="top">
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a href="index.html" class="brand" aria-label="Tantra home">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span class="brand-name">TANTRA</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./locations.html">Locations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./about.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./contact.html">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
 
-<!-- Home Section -->
-<section class="home_section" id="home">
-    <div class="overlay">
-        <div class="container">
-            <div class="home">
-                <h1><span>Where </span> Dreams <br><span>Take Flight</span> <br><span>On</span> Wings</h1>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Locations Section -->
-<section class="locations" id="locations">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="package-title">
-                    <h2>Locations</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-3">
-                <div class="col-content">
-                    <a href="./locations.html#alappey" target="_blank">
-                        <img src="./files/alappey.jpg" alt="">
-                        <h5>ALAPUZHA</h5>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="col-content">
-                    <a href="./locations.html#thekkady" target="_blank">
-                        <img src="./files/thekkady1.jpg" alt="">
-                        <h5>Thekkady</h5>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="col-content">
-                    <a href="./locations.html#kovalam" target="_blank">
-                        <img src="./files/kovalam2.jpg" alt="">
-                        <h5>Kovalam</h5>
-                    </a>
-                </div>
-            </div>
-             <div class="col-md-3">
-                <div class="col-content">
-                     <a href="./locations.html#athirappily" target="_blank"><div class="col-content">
-            <img src="./files/athirappily1.jpg" alt="">
-            <h5>Athirappily</h5>
-       
-                         </div>
-                    </a>
-                </div>
-            </div>
-            <!-- Add more columns for other locations -->
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-3">
-                <div class="col-content">
-                    <a href="./locations.html#nilambur" target="_blank"><div class="col-content">
-            <img src="./files/nilambur1.jpg" alt="">
-            <h5>Nilambur</h5>
-        </div></a>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="col-content">
-                    <a href="./locations.html#wayanad" target="_blank"><div class="col-content">
-            <img src="./files/wayanad1.jpg" alt="">
-            <h5>Wayanad</h5>
-            
-        </div></a>
-
-                </div>
-            </div>
-           
-             <div class="col-md-3">
-                <div class="col-content">
-                     <a href="./locations.html#munnar" target="_blank"><div class="col-content">
-            <img src="./files/munnar1.jpg" alt="">
-            <h5>Munnar</h5>
-           
-        </div></a>
-
-                       
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="col-content">
-                       <a href="./locations.html#rome" target="_blank"><div class="col-content">
-            <img src="./files/pkd2.jpg" alt="">
-            <h5>Palakkad</h5>
-    
-        </div></a>
-
-
-                       
-                </div>
-            </div>
-            <!-- Add more columns for other locations -->
-        </div>
-    </div>
-</section>
-
-<!-- Footer Section -->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="footer-content">
-                    <div class="footlinks">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="./register.html">Register</a></li>
-                            <li><a href="./about.html">About Us</a></li>
-                            <li style="color:white">Mob:+91 9495301375</li>
-                            <li style="color:white">Email: samsabu777@gmail.com</li>
-                        </ul>
-                    </div>
-                    <div class="footlinks">
-                        <h4>Connect</h4>
-                        <div class="social">
-                            <a href="" target="_blank"><i class='bx bxl-facebook'></i></a>
-                            <a href="" target="_blank"><i class='bx bxl-instagram'></i></a>
-                        </div>
+            <div class="nav-menu">
+                <div class="nav-item active"><a href="index.html">Home</a></div>
+                <div class="nav-item nav-dropdown">
+                    <button type="button" aria-expanded="false">Our Brands ▾</button>
+                    <div class="dropdown-menu" aria-label="Brand options">
+                        <a href="tantra-cabs.html">Tantra Cabs</a>
+                        <a href="podo.html">Podo</a>
                     </div>
                 </div>
+                <div class="nav-item"><a href="our-approach.html">Our Approach</a></div>
+                <div class="nav-item"><a href="about.html">About Us</a></div>
+                <div class="nav-item"><a href="contact.html">Contact Us</a></div>
             </div>
-        </div>
-    </div>
-</footer>
 
-<!-- Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+            <a href="tantra-cabs.html" class="cta-button">Explore Brands →</a>
+        </nav>
+    </header>
 
+    <main>
+        <section class="hero" aria-label="Tantra parent company home banner">
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <div class="eyebrow">The Parent Company</div>
+                    <h1>Every turn<br>finds a way.</h1>
+                    <p>We build thoughtful brands and purposeful experiences for the journeys ahead.</p>
+                    <a class="primary-button" href="tantra-cabs.html">Explore Our Brands →</a>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <a href="#approach" class="scroll-indicator" aria-label="Scroll to next section"></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy" id="approach" aria-label="Our philosophy editorial section">
+            <div class="philosophy-wrap">
+                <div class="philosophy-tag">Our Philosophy</div>
+
+                <div class="philosophy-grid">
+                    <div>
+                        <h2 class="vision-title">One vision.<br>Distinct journeys.</h2>
+                    </div>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">✦</div>
+                        <h3>Purposeful ideas</h3>
+                        <p>Brands born from real human needs.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">✎</div>
+                        <h3>Thoughtful design</h3>
+                        <p>Beauty in the details. Function in every step.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon">△</div>
+                        <h3>Everyday discovery</h3>
+                        <p>Small moments. Bigger perspectives.</p>
+                    </article>
+                </div>
+            </div>
+
+            <div class="journey-strip">
+                <span>Different brands. <strong>One bigger journey.</strong></span>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

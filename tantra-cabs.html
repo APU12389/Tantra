@@ -61,18 +61,11 @@
             font-weight: 600;
         }
 
-        .brand-mark {
-            width: 28px;
-            height: 28px;
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(216,181,123,0.9), rgba(255,255,255,0.18));
-            clip-path: polygon(50% 0%, 100% 22%, 100% 78%, 50% 100%, 0% 78%, 0% 22%);
-        }
-
-        .brand-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            letter-spacing: 0.08em;
+        .brand-logo {
+            display: block;
+            width: auto;
+            height: 48px;
+            object-fit: contain;
         }
 
         .nav-menu {
@@ -568,8 +561,10 @@
         }
 
         @media (max-width: 760px) {
-            .navbar { padding: 16px 18px; flex-wrap: wrap; }
-            .nav-menu { width: 100%; justify-content: center; }
+            .navbar { padding: 16px 18px; flex-wrap: wrap; justify-content: center; }
+            .brand { flex: 1 0 100%; justify-content: center; }
+            .brand-logo { height: 40px; }
+            .nav-menu { flex: 1 0 100%; width: 100%; justify-content: center; }
             .hero-inner, .content { padding-left: 18px; padding-right: 18px; }
             .intro-grid, .package-grid, .fleet-grid { grid-template-columns: 1fr; }
             .cta-button { display: none; }
@@ -581,8 +576,7 @@
     <header class="site-header">
         <nav class="navbar" aria-label="Main navigation">
             <a href="index.html" class="brand" aria-label="Tantra home">
-                <span class="brand-mark" aria-hidden="true"></span>
-                <span class="brand-name">TANTRA</span>
+                <img src="./files/tantra-logo.png" alt="TANTRA" class="brand-logo" />
             </a>
             <div class="nav-menu">
                 <div class="nav-item"><a href="index.html">Home</a></div>
